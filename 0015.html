@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS는 되는 방향으로 타입을 변환한다</title>
+    <script>
+      // 되는방향: "100"은 문자인데 숫자로 바꿀 수 있네? 숫자로 바꿈. 이게 되는방향의 개념
+      const a = "100";
+      const b = "50";
+
+      console.log(a + b); // 더하기: 문자열이 들어오면 문자열을 연결 (문자열의 더하기는 정의되어 있기 때문에 숫자로 바꾸지 않음)
+      console.log(a - b);
+      console.log(a * b);
+      console.log(a / b);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수를 사용해서 버튼을 클릭하면 자바스크립트 실행</title>
+  </head>
+  <body>
+    <button onclick="print();">출력하기</button>
+
+    <!-- ex01) 아래 버튼을 클릭하면(이벤트가 발생하면) alert으로 안녕하세요라고 출력 -->
+    <button onclick="print2()">출력하기2</button>
+
+    <script>
+      // function 함수이름(){}
+      function print() {
+        alert("hello world");
+      }
+
+      function print2() {
+        alert("안녕하세요");
+      }
+    </script>
+  </body>
+</html>

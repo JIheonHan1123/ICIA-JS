@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <p>최저연봉: <span id="target"></span>원</p>
+    <input type="text" placeholder="시급 입력..." id="hourlyWage" /><br />
+    <button onclick="calMoney()">최저연봉 출력</button>
+
+    <script>
+      function calMoney() {
+        // const target = $("#target");
+        // const hourlyWage = $("#hourlyWage");
+        // const lowestAnnualSalary = hourlyWage.val() * 209 * 12;
+        // target.text(lowestAnnualSalary);
+
+        // 더 짧게
+        const hourlyWage = $("#hourlyWage").val();
+        const lowestAnnualSalary = hourlyWage * 209 * 12;
+        $("#target").text(lowestAnnualSalary);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM작업</title>
+  </head>
+  <body>
+    <p>입력값: <span id="target"></span></p>
+    <input type="text" id="num" value="100" />
+    <script>
+      const num = document.getElementById("num").value;
+      console.log(typeof num); // string: input요소로 입력하면 무조건 글자
+
+      const target = document.getElementById("target");
+      target.innerHTML = num; // innerHTML은 열린태그 닫힌태그 사이의 공간을 의미
+    </script>
+  </body>
+</html>
