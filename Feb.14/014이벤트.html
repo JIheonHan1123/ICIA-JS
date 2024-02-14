@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>이벤트처리</title>
+  </head>
+  <body>
+    <!-- 버튼을 클릭(이벤트 발생)하면 선택한 메뉴를 alert으로 출력한다 -->
+    <!-- 이벤트를 처리할 때는 callback 함수를 사용한다 -->
+
+    <!-- 
+      <이벤트를 처리하는 방식 두가지>
+      
+      1. html 요소의 on어쩌구에 자바스크립트를 작성한다
+         (DOM Level 0 이벤트처리)
+         <button onclick="함수()"></button>
+
+      2. 자바스크립트로 이벤트처리
+         (DOM Level 2 이벤트처리)
+         $("#id").click(function(){});
+     -->
+
+    <select id="menu">
+      <option>짜장</option>
+      <option>짬뽕</option>
+      <option>탕수육</option>
+    </select>
+    <button onclick="print()">선택1</button>
+    <button id="choice">선택2</button>
+    <script>
+      // 이벤트처리 1
+      function print() {
+        // val(): form안에 들어가는 요소들의 값(value)
+        alert($("#menu").val());
+      }
+
+      // 이벤트처리 2
+      setInterval(function () {}, 1000);
+      $("#choice").click(function () {
+        alert($("#menu").val());
+      });
+    </script>
+  </body>
+</html>

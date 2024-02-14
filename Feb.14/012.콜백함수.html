@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 변수를 인자로 하는 함수
+      function f1(a) {
+        console.log(a);
+      }
+
+      // 함수를 인자로 하는 함수
+      function test1(f) {
+        f();
+      }
+
+      // f = function(){}
+      test1(function () {
+        console.log("안녕하세요");
+      });
+
+      // callback함수
+      // 위탁해서 실행하는 함수 (A를 누르면 공격인데 A키를 언제누름? 모름. 윈도우는 알고있음. 윈도우한테 위탁.)
+      // setInterVal(기능, 1000);
+      // 정해진 시간간격으로 기능을 실행 => 1초에 한번씩 기능을 실행
+      // 사용자가 기능을 주면 그 기능을 실행해주는 함수를 만드는거임
+
+      let i = 1;
+      function insa() {
+        console.log(`${i++}번째 안녕하세요`);
+      }
+      //setInterval(insa, 1000);
+
+      setInterval(function () {
+        let d = new Date();
+        console.log(d);
+      }, 1000);
+    </script>
+  </body>
+</html>

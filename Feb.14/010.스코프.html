@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ES5: 스코프가 파이썬과 동일(함수가 스코프)
+      // x와 y는 소속된 스코프가 없다 -> 전역(global)
+      var x = 10;
+      {
+        var y = 10;
+      }
+      console.log(y);
+
+      // ES6: 스코프가 자바와 동일(중괄호가 스코프)
+      let a = 10;
+      {
+        let b = 20;
+      }
+      // console.log(b);
+
+      function aaa() {
+        // var, let 이런 키워드가 없이 변수를 만들면 전역으로 간다
+        let x = 20;
+        yy = 100;
+        console.log(yy);
+      }
+
+      aaa();
+      console.log("여기서는 ", yy);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 올해의 년도는 2024. 나이를 출력하시오 -->
+    생년: <input type="number" id="year" />
+    <button onclick="print()">나이출력</button>
+    <button onclick="calAge()">나이계산</button>
+    <button onclick="enterPrice()">입장료 계산</button>
+    <script>
+      // 나이 출력
+      function print() {
+        alert(2024 - $("#year").val());
+      }
+
+      // 나이 계산
+      function calAge() {
+        let date = new Date();
+        let thisYear = date.getFullYear();
+        let year = $("#year").val();
+        let age = thisYear - year;
+        if (age >= 20) {
+          alert("성인");
+        } else {
+          alert("미성년자");
+        }
+      }
+
+      // 경복궁 입장료 계산
+      // 입장료는 25~64세 "3000원", 기타는 "무료"라고 출력
+      function enterPrice() {
+        let date = new Date();
+        let thisYear = date.getFullYear();
+        let year = $("#year").val();
+        let age = thisYear - year;
+        if (age >= 25 && age <= 64) {
+          alert("3000원");
+        } else {
+          alert("무료");
+        }
+      }
+    </script>
+  </body>
+</html>
