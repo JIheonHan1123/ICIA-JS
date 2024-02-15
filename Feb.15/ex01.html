@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+      #target {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="target"></div>
+    <button id="change">원으로</button>
+    <script>
+      let $target = $("#target");
+      let $change = $("#change");
+      let isRect = true;
+      $change.on("click", function () {
+        if (isRect) {
+          $target.css("border-radius", "100px").css("background-color", "blue");
+          $change.text("사각형으로");
+          isRect = false;
+        } else {
+          $("#target").css("border-radius", "0").css("background-color", "red");
+          $change.text("원으로");
+          isRect = true;
+        }
+      });
+    </script>
+  </body>
+</html>

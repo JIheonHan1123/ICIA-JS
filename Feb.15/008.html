@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>for문</title>
+  </head>
+  <body>
+    <script>
+      let ar = [75, 80, 70, 80, 90, 85];
+      console.log(typeof ar); // object
+
+      // 일반 for문: 자바와 동일
+      for (let i = 0; i <= 5; i++) {
+        console.log[i];
+      }
+
+      // for each 반복문: 배열에서 원소를 하나씩 꺼낸다
+      // js에서는 of, 파이썬에서는 in
+      for (a of ar) {
+        console.log(a);
+      }
+
+      // jQuery 반복문
+      // 아직은 안할거임
+
+      // ex01
+      let sum = 0;
+      for (a of ar) {
+        sum += a;
+      }
+      console.log(sum);
+      console.log(sum / ar.length);
+    </script>
+  </body>
+</html>

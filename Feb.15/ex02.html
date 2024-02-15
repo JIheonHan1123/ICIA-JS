@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>마우스 좌표 출력</title>
+    <style>
+      #canvas {
+        width: 500px;
+        height: 500px;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <div id="target"></div>
+
+    <script>
+      let $canvas = $("#canvas");
+      let $target = $("#target");
+      let isDown = false;
+
+      $canvas.on("mousemove", function (e) {
+        let x = e.pageX;
+        let y = e.pageY;
+        if (!isDown) {
+          $target.text(`x:${x}, y:${y} (마우스 이동)`);
+        } else {
+          $target.text(`x:${x}, y:${y} (마우스 드래그)`);
+        }
+      });
+
+      $canvas.on("mousedown", function (e) {
+        isDown = true;
+      });
+
+      $canvas.on("mouseup", function (e) {
+        isDown = false;
+      });
+    </script>
+  </body>
+</html>
