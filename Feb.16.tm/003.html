@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!--display : block, inlin, inline-block, none-->
+    <!-- none이면 사라지고, block이면 원래대로 돌아온다.-->
+    <p id="target1">우리나라 좋은나라</p>
+    <p id="target2">xxxxxxxxxxxxxxxx</p>
+    <button id="none">사라지게</button>
+    <button id="block">나타나게</button>
+
+    <script>
+      let $target1 = $("#target1");
+      //let $target2 = $("#target2");
+
+      let $none = $("#none");
+      let $block = $("#block");
+
+      $none.on("click", function () {
+        $target1.css("display", "none");
+        // $target2.css("display", "none");
+      });
+
+      $block.on("click", function () {
+        $target1.css("display", "block");
+        // $target2.css("display", "block");
+      });
+    </script>
+  </body>
+</html>
+
+<!-- 제이쿼리 함수는 자바스크립트다??-->
