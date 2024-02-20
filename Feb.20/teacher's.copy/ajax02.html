@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜백지옥</title>
+  </head>
+  <body>
+    <script>
+      // $.ajax는 비동기 실행됨. (동시에 실행=병렬실행)
+      // A,B,C 순으로 실행되어야 한다면
+      $.ajax({
+        url: "A",
+        success: function () {
+          // 성공했을 때 실행되는 콜백 함수
+          $.ajax({
+            url: "B",
+            success: function () {
+              $.ajax({
+                url: "C",
+              });
+            },
+          });
+        },
+      });
+    </script>
+  </body>
+</html>
