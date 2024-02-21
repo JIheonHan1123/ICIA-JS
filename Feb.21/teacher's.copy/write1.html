@@ -49,6 +49,14 @@
       7. callback 함수
         - 함수를 위탁해서 실행
         - 이벤트 처리함수 (이벤트 handler)가 대표적
+
+      8. $.ajax()에서 서버로 넘기는 데이터는 urlencoded다
+        - $.ajax()는 data에 자바스크립트를 주면 자동으로 urlencoded로 변환
+        - username은 spring, pwd는 1234라면
+          $.ajax({
+            url: '서버주소,
+            data: 'username=spring&pwd=1234',
+          });
      -->
 
     <!-- 그냥 form태그랑 button으로 처리하는 코드 -->
