@@ -4,67 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <title>연락처 작성 개념소개(form)</title>
-  </head>
-  <body>
-    <!-- 연락처를 작성하고 나면 수동으로 /list.html로 이동해야 한다 -->
-    <!-- 
-      1. MVC방식
-        - 프론트는 서버의 따까리 (백에 프론트가 들어있음)
-        - 서버에서 화면까지 책임진다
-        - 서버는 html 또는 이동할 주소를 보내준다 
-          (파이썬기준 render_template(html이름) or redirect(주소))
-
-      2. REST 방식
-        - 프론트와 백은 서로 대등한 계약관계
-        - 백은 프론트에 데이터만 보내준다
-        - 화면이동이 필요한 경우 프론트에서 이동 (location.href)
-
-      3. form을 submit하는 방식은 MVC
-        - form을 submit하면 서버가 이동할 주소를 보내준다.
-
-      4. 파일업로드를 하는 경우 반드시 form-data지정이 필수!!
-        - <form enctype="multipart/form-data"></form>
-        - form-data를 지정하지 않으면 서버에 파일이 전송되지 않고 글자만 전송됨
-
-      5. form안에 있는 button을 클릭하면 submit한다
-        - submit을 안하려면 버튼에 type="button"을 준다
-          ex) submit안하고 jQuery실행되게 하고 싶다 이럴 때
-     -->
-
-    <!-- 그냥 form태그랑 button으로 처리하는 코드 -->
-    <!-- <form action="http://192.168.0.177:8081/write" method="post" enctype="multipart/form-data">
-      <input type="file" name="photo" />
-      <input type="text" name="name" />
-      <input type="text" name="tel" />
-      <input type="text" name="address" />
-      <button>추가하기</button>
-    </form> -->
-
-    <!-- js로 처리하는 코드 -->
+    <title>Document</title>
     <script>
-      // $(document).ready 이벤트는 js이벤트가 아니라 jQuery이벤트임
-      // js에서 "화면이 준비됐다"는 이벤트는 load 이벤트임
       $(document).ready(function () {
-        $("#add").on("click", function () {
-          const name = $("#name").val;
-          const address = $("#address").val;
-          const tel = $("#tel").val;
-          if (name == "" || address == "" || tel == "") {
-            alert("이름, 연락처, 주소는 필수입력입니다");
+        $("#add").on("click", function (e) {
+          // 버튼이나 a태그와 같이 2가지 동작을 가지는 요소의 두번째 동작(이동)을 막는다
+          e.preventDefault();
+
+          const title = $("#title").val();
+          if (title == "") {
+            alert("제목을 입력하세요");
+            // return을 해도 form은 submit이 된다 (기본적으로 버튼 누르면 무조건 submit임)
+            // => 버튼태그에 type="button"을 주거나 e.preventDefault();로 막아주면 됨
             return;
           }
-          // js로 form을 서버로 넘기자
-          $("#frm").submit();
         });
       });
     </script>
-    <form id="frm" action="http://192.168.0.177:8081/write" method="post" enctype="multipart/form-data">
-      <input type="file" name="photo" />
-      <input type="text" name="name" id="name" />
-      <input type="text" name="tel" id="tel" />
-      <input type="text" name="address" id="address" />
-      <button type="button">추가하기</button>
+  </head>
+  <body>
+    <form action="서버주소" method="post" enctype="multipart/form-data">
+      <input type="text" id="title" />
+      <button id="add"></button>
     </form>
   </body>
 </html>
