@@ -74,9 +74,9 @@
       // js에서 "화면이 준비됐다"는 이벤트는 load 이벤트임
       $(document).ready(function () {
         $("#add").on("click", function () {
-          const name = $("#name").val;
-          const address = $("#address").val;
-          const tel = $("#tel").val;
+          const name = $("#name").val();
+          const address = $("#address").val();
+          const tel = $("#tel").val();
           if (name == "" || address == "" || tel == "") {
             alert("이름, 연락처, 주소는 필수입력입니다");
             return;
