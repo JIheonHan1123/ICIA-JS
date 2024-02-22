@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update = Read + Write</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const searchParams = new URLSearchParams(location.search);
+        const cno = searchParams.get("cno");
+        if (cno == null) {
+          location.href = "list.html";
+        }
+
+        $.ajax({
+          url: "http://192.168.0.177:8081/read?cno=" + cno,
+          success: function (result) {
+            // 화면을 출력
+            $("#name").val(result.name);
+            $("#address").val(result.address);
+            $("#tel").val(result.tel);
+          },
+          error: function (x) {
+            alert(x.responseText);
+            location.href = "list.html";
+          },
+        });
+
+        $("#update").on("click", function () {
+          const params = {
+            cno: cno,
+            name: $("#name").val(),
+            address: $("#address").val(),
+            tel: $("#tel").val(),
+          };
+          $.ajax({
+            url: "http://192.168.0.177:8081/update",
+            method: "post",
+            data: params,
+            success: function () {
+              location.href = "list.html";
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img id="photo" />
+    이름: <input type="text" id="name" /><br />
+    주소: <input type="text" id="address" /><br />
+    연락처: <input type="text" id="tel" /><br />
+    <button id="update">변경</button>
+  </body>
+</html>

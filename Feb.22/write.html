@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>write</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#add").on("click", function (e) {
+          e.preventDefault();
+
+          // 파일을 포함하는 form-data를 처리하려면 FormData내장객체를 사용
+          // js내장객체이기 때문에 jQuery넘기면 코드가 복잡해짐 -> 그래서 document.getElementById() 사용함
+          const formData = new FormData(document.getElementById("frm"));
+          // 이때는 ajax쓰더라도 form 태그가 있어야 하고 -> 그럼 당연히 name속성도 있어야 함
+          // form태그 안에 있는 데이터를 다 받아오기 때문에
+          // 아래처럼 데이터를 받아올 필요가 없다
+
+          // const params = {
+          //   name: $("#name").val(),
+          //   address: $("#address").val(),
+          //   tel: $("#tel").val(),
+          // };
+
+          $.ajax({
+            url: "http://192.168.0.177:8081/write",
+            method: "post",
+            data: formData,
+            // 결론: fromdat 넘걸거면 form태그에 아이디 걸어서 내용 가져오고
+            //       ajax에 아래 두 줄 작성 (이 두 줄 쓰는게 form태그에 enctype="multipart/form-data" 적는거랑 똑같음)
+            processData: false, // {name: 'spring', age:22} -> name=spring&age=22 이 변환을 해주는 필드를 processData => formdata를 쓸 때는 변환하면 안된다 (사진을 글자로 넘기면 당연히 안됨)
+            contentType: false, // 웹에서 데이터의 종류를 ContentType이라고 한다 ex) 엑셀이면 "applictaion/excel", html이면 "text/html" => form-data에 대한 ContentType은 $.ajax에서 false이다
+            // --------------------
+            success: function () {
+              location.href = "list.html";
+            },
+            error: function (xx) {
+              alert(xx.responseText);
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form id="frm">
+      사진(선택): <input type="file" id="photo" name="photo" /><br />
+      이름: <input type="text" id="name" name="name" /><br />
+      주소: <input type="text" id="address" name="address" /><br />
+      연락처: <input type="text" id="tel" name="tel" /><br />
+      <button id="add">추가</button>
+    </form>
+  </body>
+</html>
