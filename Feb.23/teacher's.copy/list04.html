@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+      #pagination {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <script>
+      // $.ajax는 비동기 작업 -> 순서대로 실행 X, 병렬로 실행됨
+      // 비동기 작업을 순서대로 실행하려면 "콜백지옥" 시작
+      // $.ajax({
+      //   success: function () {
+      //     $.ajax({
+      //       success: function () {},
+      //     });
+      //   },
+      // });
+
+      // 콜백지옥을 해결하기 위해 나온 개념이 promise + await + async
+      // promise: 나중에 받아올 비동기코드의 결과값을 상징하는 객체
+      // awit: promixe의 값이 정해질때까지 대기해라
+      // await를 실행하는 함수는 async라고 지정해야한다
+
+      // 오류가 발생하면 실행을 중지하고 오류메시지를 찍어라
+      $(document).ready(async function () {
+        try {
+          const result = $.ajax("http://sample.bmaster.kro.kr/contacts");
+          console.log(result);
+        } catch (err) {
+          // try에서 오류가 발생하면 catch로 이동
+          // 오류정보는 err 객체에 들어있다.
+          console.log(err);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <div id="pagination"><ul class="pagination"></ul></div>
+    </table>
+  </body>
+</html>
